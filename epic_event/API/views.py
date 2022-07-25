@@ -32,4 +32,35 @@ class ClientViewSet(ModelViewSet):
         if self.request.user.role == 'management' :
             return ClientSerializerForManagement
         return ClientSerializerForUser
+
+
+class ContractViewSet(ModelViewSet):
+    queryset = Contract.objects.all()
+    
+    permission_classes = [
+        IsAuthenticated,
+        IsManagementPermission,
+        IsSaleContactPermission,
+        IsSupportContactPermission
+    ]
+    
+    def get_serializer_class(self):
+        if self.request.user.role == 'management' :
+            return ContractSerializerForManagement
+        return ContractSerializerForUser
+
+class EventViewSet(ModelViewSet):
+    queryset = Event.objects.all()
+    
+    permission_classes = [
+        IsAuthenticated,
+        IsManagementPermission,
+        IsSaleContactPermission,
+        IsSupportContactPermission
+    ]
+    
+    def get_serializer_class(self):
+        if self.request.user.role == 'management' :
+            return EventSerializerForManagement
+        return EventSerializerForUser
     

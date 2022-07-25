@@ -20,7 +20,7 @@ class IsSaleContactPermission(BasePermission):
 
 class IsSupportContactPermission(BasePermission):
     def has_object_permission(self, request, view, obj):
-        if request.method in SAFE_METHODS:
-            return True
         if request.method == "PUT" and isinstance(obj, Event):
             return obj.support_contact == request.user
+        if request.method in SAFE_METHODS and isinstance(obj, Client):
+            return obj.event_set.filter(support_contact = request.user)
