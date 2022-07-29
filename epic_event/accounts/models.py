@@ -5,7 +5,7 @@ from django.db import models
 class User(AbstractUser):
     ROLE = (
         ("management", "Management"),
-        ("sales", "Sales"),
+        ("sale", "Sale"),
         ("support", "Support"),
     )
     role = models.CharField(

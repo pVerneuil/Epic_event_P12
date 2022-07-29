@@ -4,14 +4,14 @@ from .models import Client, Contract, Event
 
 @admin.register(Client)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "status", "sale_contact")
+    list_display = ("id", "first_name", "status", "sale_contact")
 
 
 @admin.register(Contract)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("client", "sale_contact")
+    list_display = ("id","client", "sale_contact")
 
 
 @admin.register(Event)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("client", "support_contact", "contract")
+    list_display = ("id", "client", "support_contact", "contract")
