@@ -1,8 +1,9 @@
-from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework import generics, status
+from rest_framework import status
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 from .models import Event, Contract, Client
 
 from .serializers import (
@@ -28,6 +29,11 @@ class ClientViewSet(ModelViewSet):
         IsAuthenticated,
         ClientsPermission,
     ]
+
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    filterset_fields =['last_name', 'email']
+    search_fields = ['last_name', 'email']
+
     def create(self, request):
         self.check_object_permissions(self.request, Client)
         if self.request.user.role == 'management' :
@@ -52,6 +58,10 @@ class ContractViewSet(ModelViewSet):
         IsAuthenticated,
         ContractPermission
     ]
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    filterset_fields =[ 'client__last_name', 'client__email','date_created', 'amount']
+    search_fields = ['client__last_name', 'client__email', 'date_created', 'amount']
+
     def create(self, request):
         self.check_object_permissions(self.request, Contract)
         if self.request.user.role == 'management' :
@@ -75,7 +85,10 @@ class EventViewSet(ModelViewSet):
         IsAuthenticated,
         EventsPermission,
     ]
-    
+    filter_backends = [DjangoFilterBackend,filters.SearchFilter]
+    filterset_fields =['client__last_name', 'client__email']
+    search_fields = ['client__last_name', 'client__email', 'event_date']
+
     def create(self, request):
         self.check_object_permissions(self.request, Event)
         if self.request.user.role == 'management' :

@@ -9,7 +9,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Contract)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("id","client", "sale_contact")
+    list_display = ("id","client", "sale_contact", "date_created")
 
 
 @admin.register(Event)
