@@ -6,15 +6,19 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
 from django.core.exceptions import ValidationError
 
+
 class UserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+
+    password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label="Password confirmation", widget=forms.PasswordInput
+    )
 
     class Meta:
         model = User
-        fields = ('role',)
+        fields = ("role",)
 
     def clean_password2(self):
         # Check that the two password entries match
@@ -31,25 +35,31 @@ class UserCreationForm(forms.ModelForm):
         if commit:
             user.save()
         return user
-class UserChangeForm(forms.ModelForm):
 
+
+class UserChangeForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('password','role' )
+        fields = ("password", "role")
+
+
 class Admin(UserAdmin):
-    list_display = ("id", "username","role")
+    list_display = ("id", "username", "role")
     form = UserChangeForm
     add_form = UserCreationForm
     fieldsets = (
-        (None, {'fields': ('password',)}),
-        ('Personal info', {'fields': ('username',)}),
-        ('Permissions', {'fields': ('role',)}),
+        (None, {"fields": ("password",)}),
+        ("Personal info", {"fields": ("username",)}),
+        ("Permissions", {"fields": ("role",)}),
     )
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('username','role', 'password1', 'password2'),
-        }),
+        (
+            None,
+            {
+                "classes": ("wide",),
+                "fields": ("username", "role", "password1", "password2"),
+            },
+        ),
     )
 
 

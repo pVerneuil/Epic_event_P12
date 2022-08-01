@@ -5,10 +5,10 @@ from .views import ClientViewSet, ContractViewSet, EventViewSet
 
 router = DefaultRouter()
 
-router.register(r'clients',ClientViewSet,basename='clients')
-router.register(r'contracts',ContractViewSet,basename='contracts')
-router.register(r'events',EventViewSet,basename='events')
+router.register(r"clients", ClientViewSet, basename="clients")
+router.register(r"contracts", ContractViewSet, basename="contracts")
+router.register(r"events", EventViewSet, basename="events")
 
 urlpatterns = [
-	path("", include(router.urls)),
+    path("", include(router.urls)),
 ]

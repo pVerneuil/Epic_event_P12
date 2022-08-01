@@ -6,15 +6,15 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),
-        ('API', '0002_initial'),
-        ('admin', '0003_logentry_add_action_flag_choices'),
-        ('accounts', '0002_myuser_delete_user'),
+        ("auth", "0012_alter_user_first_name_max_length"),
+        ("API", "0002_initial"),
+        ("admin", "0003_logentry_add_action_flag_choices"),
+        ("accounts", "0002_myuser_delete_user"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='MyUser',
-            new_name='User',
+            old_name="MyUser",
+            new_name="User",
         ),
     ]
