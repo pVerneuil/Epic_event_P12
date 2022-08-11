@@ -1,7 +1,4 @@
-from ast import Return
 from rest_framework.permissions import BasePermission, SAFE_METHODS
-from .models import Event, Contract, Client
-
 
 class ClientsPermission(BasePermission):
     def has_object_permission(self, request, view, obj):
@@ -46,8 +43,3 @@ class EventsPermission(BasePermission):
                 return True
             if request.user.role == "support":
                 return obj.support_contact == request.user
-
-
-class permissionTEST(BasePermission):
-    def has_object_permission(self, request, view, obj):
-        return False

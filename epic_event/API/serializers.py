@@ -1,8 +1,6 @@
-from dataclasses import field
 from rest_framework import serializers
 from .models import Event, Contract, Client
 
-# https://stackoverflow.com/questions/41366832/django-rest-api-make-field-read-only-for-certain-permission-level
 
 
 class ClientSerializerForManagement(serializers.ModelSerializer):

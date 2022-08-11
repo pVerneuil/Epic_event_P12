@@ -18,7 +18,6 @@ from .permissions import (
     ClientsPermission,
     ContractPermission,
     EventsPermission,
-    permissionTEST,
 )
 
 
