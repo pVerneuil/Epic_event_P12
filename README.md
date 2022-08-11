@@ -68,8 +68,8 @@ Install packages from requirements.txt using
  ```
 
 - Open the app in a web browser:  http://127.0.0.1:8000/
-- API documentation : https://documenter.getpostman.com/view/20821520/Uz5KkEKy
 
 - you can use superuser credentails to access the admin area (/admin):
   - username : admin
   - password : azer1234
+- Other users (management, sale_1, sale_2, support_1, support_2) all have 'azer1234' as password.
