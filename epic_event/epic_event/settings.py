@@ -25,6 +25,25 @@ SECRET_KEY = "django-insecure-39&t#9-g9k58=+@-*kef2+fcb4x+2ly+y+@lq8@1hs)5es#%-0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': '/home/paul/Documents/workplace/formation/Epic_event_P12/debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 ALLOWED_HOSTS = []
 
 
