@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Event, Contract, Client
 
 
-
+# 2 serializer per models: one for management, one for other users that don't give access to sale_contact and support_contact fields. 
 class ClientSerializerForManagement(serializers.ModelSerializer):
     class Meta:
         model = Client
